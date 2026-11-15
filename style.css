@@ -1,619 +1,519 @@
 
-:root {
-  --ivory: #F4EBDD;
-  --beige: #E4D2B8;
-  --caramel: #A77B59;
-  --coffee: #684638;
-  --rose: #9A5360;
-  --gold: #D4A66A;
-  --espresso: #38251F;
-  --white: #FFFDF8;
-  --muted: #806B5B;
+const memories = [
+  { file: "memory-01.jpg.jpeg", caption: "Memory 01" },
+  { file: "memory-02.jpg.jpeg", caption: "Memory 02" },
+  { file: "memory-03.jpg.jpeg", caption: "Memory 03" },
+  { file: "memory-04.jpg.jpeg", caption: "Memory 04" },
+  { file: "memory-05.jpg.jpeg", caption: "Memory 05" },
+  { file: "memory-06.jpg.jpeg", caption: "Memory 06" },
+  { file: "memory-07.jpg.jpeg", caption: "Memory 07" },
+  { file: "memory-08.jpg.jpeg", caption: "Memory 08" },
+  { file: "memory-09.jpg.jpeg", caption: "Memory 09" },
+  { file: "memory-10.jpg.jpeg", caption: "Memory 10" },
+  { file: "memory-11.jpg.jpeg", caption: "Memory 11" },
+  { file: "memory-12.jpg.jpeg", caption: "Memory 12" }
+];
+
+// Separate photos for the five music chapters.
+const chapters = [
+  {
+    name: "Raksha 💖",
+    photo: "raksha.jpg",
+    song: "raksha.mp3",
+    note: "The main character of this little story."
+  },
+  {
+    name: "Uncle Reaction 😆",
+    photo: "uncle-reaction.jpg",
+    song: "uncle-reaction.mp3",
+    note: "A chapter full of reactions and laughs."
+  },
+  {
+    name: "Jeni 💕",
+    photo: "jeni.jpg",
+    song: "jeni.mp3",
+    note: "One more lovely part of the memories."
+  },
+  {
+    name: "Sameer 🌈",
+    photo: "sameer.jpg",
+    song: "sameer.mp3",
+    note: "The chaos deserves its own chapter."
+  },
+  {
+    name: "RΛJS",
+    photo: "rajs.jpg",
+    song: "rajs.mp3",
+    note: "A little chapter with its own soundtrack."
+  }
+];
+
+const openWhenMessages = [
+  [
+    "You're feeling sad 🥺",
+    "Take a breath, Mama. You don't have to pretend to be okay all the time. You matter, your feelings matter, and you deserve kindness. I'm always wishing the best for you. 🤍"
+  ],
+  [
+    "You miss me 🫶",
+    "Then remember one thing: distance or a busy day doesn't erase a real friendship. Think of one of our silly moments and smile. I'll be cheering for you from wherever I am. 💖"
+  ],
+  [
+    "We have a silly fight 😂",
+    "First, calm down. Then remember we're two people who can misunderstand each other and still choose respect, honesty, and friendship. Let's talk it out instead of letting one moment define everything. 🤝"
+  ],
+  [
+    "You need support 🤍",
+    "You don't have to figure everything out in one day. Take it one step at a time, and reach out to someone you trust when things feel heavy. I hope you always have people around you who listen and support you."
+  ],
+  [
+    "You need a smile 🌷",
+    "Official reminder: you are allowed to laugh at the most random things, send silly messages, and be your wonderfully chaotic self. Here's a tiny smile from this page. 😆"
+  ],
+  [
+    "You need a reminder ✨",
+    "You are important. You are appreciated. And you have made some genuinely lovely memories in my life. Never forget that, Mama. 💖"
+  ]
+];
+
+const quizQuestions = [
+  {
+    q: "What do I call you?",
+    a: ["Mama", "Sister", "Boss", "Friend"],
+    correct: "Mama"
+  },
+  {
+    q: "What do you mean to me?",
+    a: ["Nothing", "Everything", "A classmate", "A stranger"],
+    correct: "Everything"
+  },
+  {
+    q: "Who is my special to me ?",
+    a: ["Jeni", "Raksha", "Sameer", "Someone else"],
+    correct: "Raksha"
+  },
+  {
+    q: "What makes our friendship special?",
+    a: ["Trust", "Support", "All of these", "Memories"],
+    correct: "All of these"
+  },
+  {
+    q: "What will I always do?",
+    a: [
+      "Ignore you",
+      "Always support you and be with you",
+      "Forget you",
+      "Avoid you"
+    ],
+    correct: "Always support you and be with you"
+  },
+  {
+    q: "What's your special nickname?",
+    a: ["Mama 💖🫶", "Kullachi 😆", "Gay 🌈🏳️‍🌈", "Lesbian 👻"],
+    correct: "Mama 💖🫶"
+  },
+  {
+    q: "Who's your favourite troublemaker?",
+    a: ["Ahamed", "Sameer", "Uncle", "Jeni"],
+    correct: "Ahamed"
+  },
+  {
+    q: "What's one thing we should never stop doing?",
+    a: ["Irritate Each other", "Speak", "Stay silent", "Ignore"],
+    correct: "Speak"
+  },
+  {
+    q: "What matters most in our friendship?",
+    a: ["Fame", "Trust", "Money", "Popularity"],
+    correct: "Trust"
+  },
+  {
+    q: "Our friendship is...?",
+    a: ["Temporary", "Both — silly & special", "Just ordinary", "Nothing"],
+    correct: "Both — silly & special"
+  }
+];
+
+// Background animation: ✨ stars and floating hearts.
+const ambient = document.getElementById("ambient");
+
+for (let i = 0; i < 104; i++) {
+  const particle = document.createElement("span");
+  const isSparkle = i % 4 !== 0;
+
+  particle.className = `particle ${isSparkle ? "sparkle" : "heart"}`;
+  particle.textContent = isSparkle ? "✨" : "💖";
+  particle.style.left = `${Math.random() * 100}%`;
+  particle.style.fontSize = `${9 + Math.random() * 13}px`;
+  particle.style.animationDuration = `${18 + Math.random() * 32}s`;
+  particle.style.animationDelay = `${-Math.random() * 45}s`;
+  particle.style.setProperty(
+    "--drift",
+    `${-70 + Math.random() * 140}px`
+  );
+
+  ambient.appendChild(particle);
 }
 
-* {
-  box-sizing: border-box;
+// Pause and resume background animation.
+document.getElementById("motionToggle").addEventListener("click", (event) => {
+  const paused = document.body.classList.toggle("motion-paused");
+
+  event.currentTarget.setAttribute("aria-pressed", String(paused));
+  event.currentTarget.textContent = paused ? "Ⅱ" : "✦";
+});
+
+// Open diary button.
+document.getElementById("openDiary").addEventListener("click", () => {
+  document.getElementById("letter").scrollIntoView({
+    behavior: "smooth"
+  });
+});
+
+// Build 12 scrapbook photos.
+const memoryGrid = document.getElementById("memoryGrid");
+
+memories.forEach((memory, index) => {
+  const button = document.createElement("button");
+  button.className = "memory-card";
+  button.type = "button";
+
+  button.style.setProperty(
+    "--tilt",
+    `${(index % 2 ? 1 : -1) * (1 + Math.random() * 2)}deg`
+  );
+
+  const image = document.createElement("img");
+  image.src = `assets/photos/${memory.file}`;
+  image.alt = memory.caption;
+  image.loading = "lazy";
+
+  image.onerror = () => {
+    image.remove();
+
+    const placeholder = document.createElement("div");
+    placeholder.className = "memory-placeholder";
+    placeholder.innerHTML = `
+      <div>
+        <span>♡</span>
+        Add ${memory.file}
+        <small>assets/photos/</small>
+      </div>
+    `;
+
+    button.insertBefore(placeholder, button.firstChild);
+  };
+
+  const caption = document.createElement("div");
+  caption.className = "memory-caption";
+  caption.textContent = memory.caption;
+
+  button.append(image, caption);
+
+  button.addEventListener("click", () => {
+    if (!image.isConnected || !image.complete || image.naturalWidth === 0) {
+      return;
+    }
+
+    document.getElementById("lightboxImage").src = image.src;
+    document.getElementById("lightboxCaption").textContent = memory.caption;
+    document.getElementById("lightbox").hidden = false;
+  });
+
+  memoryGrid.appendChild(button);
+});
+
+// Photo lightbox.
+const lightbox = document.getElementById("lightbox");
+
+document.getElementById("lightboxClose").addEventListener("click", () => {
+  lightbox.hidden = true;
+});
+
+lightbox.addEventListener("click", (event) => {
+  if (event.target === lightbox) {
+    lightbox.hidden = true;
+  }
+});
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") {
+    lightbox.hidden = true;
+  }
+});
+
+// Open When letters.
+const envelopeList = document.getElementById("envelopeList");
+
+openWhenMessages.forEach(([title, message]) => {
+  const item = document.createElement("article");
+  item.className = "envelope";
+
+  const button = document.createElement("button");
+  button.type = "button";
+  button.setAttribute("aria-expanded", "false");
+  button.innerHTML = `<span>${title}</span><span>＋</span>`;
+
+  const content = document.createElement("div");
+  content.className = "envelope-content";
+  content.hidden = true;
+  content.textContent = message;
+
+  button.addEventListener("click", () => {
+    const opening = content.hidden;
+
+    content.hidden = !opening;
+    button.setAttribute("aria-expanded", String(opening));
+    button.lastElementChild.textContent = opening ? "−" : "＋";
+  });
+
+  item.append(button, content);
+  envelopeList.appendChild(item);
+});
+
+// Five music chapters: each has its own photo and independent MP3.
+const chapterGrid = document.getElementById("chapterGrid");
+
+chapters.forEach((chapter, index) => {
+  const card = document.createElement("article");
+  card.className = "chapter-card";
+
+  const title = document.createElement("div");
+  title.className = "chapter-title";
+  title.innerHTML = `
+    <h3>${chapter.name}</h3>
+    <span>✧ 0${index + 1}</span>
+  `;
+
+  const photo = document.createElement("div");
+  photo.className = "chapter-photo";
+
+  const img = document.createElement("img");
+  img.src = `assets/photos/${chapter.photo}`;
+  img.alt = `${chapter.name} chapter photo`;
+  img.loading = "lazy";
+
+  img.onerror = () => {
+    img.remove();
+    photo.innerHTML = `
+      <div>
+        ♡
+        <small>Add ${chapter.photo} here</small>
+      </div>
+    `;
+  };
+
+  photo.appendChild(img);
+
+  const note = document.createElement("p");
+  note.className = "asset-note";
+  note.textContent = chapter.note;
+
+  const controls = document.createElement("div");
+  controls.className = "audio-controls";
+
+  const audio = document.createElement("audio");
+  audio.controls = true;
+  audio.preload = "none";
+  audio.src = `assets/songs/${chapter.song}`;
+
+  controls.appendChild(audio);
+  card.append(title, photo, note, controls);
+  chapterGrid.appendChild(card);
+});
+
+// Countdown to December 21, 2027.
+function updateCountdown() {
+  const target = new Date("2027-12-21T00:00:00+05:30").getTime();
+  const remaining = Math.max(0, target - Date.now());
+
+  const day = 86400000;
+  const hour = 3600000;
+  const minute = 60000;
+
+  document.getElementById("days").textContent =
+    Math.floor(remaining / day);
+
+  document.getElementById("hours").textContent =
+    Math.floor((remaining % day) / hour);
+
+  document.getElementById("minutes").textContent =
+    Math.floor((remaining % hour) / minute);
+
+  document.getElementById("seconds").textContent =
+    Math.floor((remaining % minute) / 1000);
 }
 
-html {
-  scroll-behavior: smooth;
-  scroll-padding-top: 18px;
+updateCountdown();
+setInterval(updateCountdown, 1000);
+
+// Friendship quiz.
+let currentQuestion = 0;
+let correctCount = 0;
+let answered = false;
+
+const questionText = document.getElementById("questionText");
+const answersEl = document.getElementById("answers");
+const nextButton = document.getElementById("nextQuestion");
+const feedback = document.getElementById("quizFeedback");
+
+function renderQuestion() {
+  answered = false;
+
+  const item = quizQuestions[currentQuestion];
+
+  document.getElementById("quizProgress").textContent =
+    `QUESTION ${currentQuestion + 1} / ${quizQuestions.length}`;
+
+  document.getElementById("quizScore").textContent =
+    `${correctCount} correct`;
+
+  document.getElementById("progressFill").style.width =
+    `${((currentQuestion + 1) / quizQuestions.length) * 100}%`;
+
+  questionText.textContent = item.q;
+  answersEl.innerHTML = "";
+  feedback.textContent = "";
+  nextButton.disabled = true;
+
+  nextButton.textContent =
+    currentQuestion === quizQuestions.length - 1
+      ? "See results →"
+      : "Next question →";
+
+  item.a.forEach((answer) => {
+    const button = document.createElement("button");
+
+    button.className = "answer-btn";
+    button.type = "button";
+    button.textContent = answer;
+
+    button.addEventListener("click", () => {
+      chooseAnswer(answer, button);
+    });
+
+    answersEl.appendChild(button);
+  });
 }
 
-body {
-  margin: 0;
-  background: var(--ivory);
-  color: var(--espresso);
-  font-family: "DM Sans", sans-serif;
-  line-height: 1.65;
-}
+function chooseAnswer(answer, selectedButton) {
+  if (answered) return;
 
-button,
-input {
-  font: inherit;
-}
+  answered = true;
 
-button {
-  border: 0;
-  border-radius: 999px;
-  padding: 11px 19px;
-  background: var(--coffee);
-  color: var(--white);
-  cursor: pointer;
-  transition: 0.2s;
-}
+  const correct = quizQuestions[currentQuestion].correct;
 
-button:hover {
-  transform: translateY(-2px);
-  background: var(--rose);
-}
-
-button:disabled {
-  cursor: default;
-  opacity: 1;
-}
-
-.secondary {
-  background: var(--beige);
-  color: var(--espresso);
-}
-
-a {
-  color: var(--coffee);
-}
-
-.site {
-  position: relative;
-  z-index: 2;
-  max-width: 1120px;
-  margin: auto;
-  background: var(--ivory);
-  min-height: 100vh;
-}
-
-/* BACKGROUND ANIMATION */
-
-#decor {
-  position: fixed;
-  inset: 0;
-  overflow: hidden;
-  pointer-events: none;
-  z-index: 1;
-}
-
-.particle {
-  position: absolute;
-  top: -35px;
-  pointer-events: none;
-}
-
-.particle.sparkle {
-  color: var(--gold);
-  text-shadow: 0 0 8px #D4A66A88;
-  animation: fall var(--duration) ease-in-out var(--delay) infinite;
-}
-
-.particle.heart {
-  top: auto;
-  bottom: -35px;
-  color: var(--rose);
-  opacity: 0.42;
-  animation: rise var(--duration) ease-in-out var(--delay) infinite;
-}
-
-@keyframes fall {
-  0% {
-    transform: translate(0, -5vh) rotate(0);
-    opacity: 0;
+  if (answer === correct) {
+    correctCount++;
+    feedback.textContent = "Correct! You know our little world. 💖";
+  } else {
+    feedback.textContent = `Not quite! The answer is: ${correct}`;
   }
 
-  35% {
-    transform: translate(var(--drift), 30vh) rotate(var(--twist));
-    opacity: 0.8;
+  [...answersEl.children].forEach((button) => {
+    button.disabled = true;
+
+    if (button.textContent === correct) {
+      button.classList.add("correct");
+    } else if (button === selectedButton) {
+      button.classList.add("wrong");
+    }
+  });
+
+  document.getElementById("quizScore").textContent =
+    `${correctCount} correct`;
+
+  nextButton.disabled = false;
+}
+
+nextButton.addEventListener("click", () => {
+  if (!answered) return;
+
+  if (currentQuestion < quizQuestions.length - 1) {
+    currentQuestion++;
+    renderQuestion();
+  } else {
+    questionText.textContent =
+      `You got ${correctCount} out of ${quizQuestions.length}!`;
+
+    answersEl.innerHTML = "";
+
+    feedback.textContent =
+      correctCount === 10
+        ? "Perfect score, Mama! ✨"
+        : "The best part is the memories, not the score. 💖";
+
+    nextButton.disabled = true;
+    nextButton.textContent = "Quiz completed";
+
+    document.getElementById("quizProgress").textContent =
+      "QUIZ COMPLETE";
+
+    document.getElementById("progressFill").style.width = "100%";
+  }
+});
+
+document.getElementById("restartQuiz").addEventListener("click", () => {
+  currentQuestion = 0;
+  correctCount = 0;
+  renderQuestion();
+});
+
+renderQuestion();
+
+// Playful secret reveal. This is not secure authentication.
+document.getElementById("secretForm").addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  const value = document
+    .getElementById("secretInput")
+    .value.trim()
+    .toLowerCase();
+
+  const feedback = document.getElementById("secretFeedback");
+
+  if (value === "mama") {
+    document.getElementById("secretMessage").hidden = false;
+    feedback.textContent = "Unlocked! ✨";
+  } else {
+    feedback.textContent = "Ahaa u are Wrong !!! 😜";
+    document.getElementById("secretMessage").hidden = true;
+  }
+});
+
+// Local photo booth preview.
+let boothObjectUrl = null;
+
+const boothInput = document.getElementById("boothInput");
+
+boothInput.addEventListener("change", () => {
+  const file = boothInput.files && boothInput.files[0];
+
+  if (!file) return;
+
+  if (boothObjectUrl) {
+    URL.revokeObjectURL(boothObjectUrl);
   }
 
-  68% {
-    transform: translate(calc(var(--drift) * -.55), 70vh)
-      rotate(calc(var(--twist) * -.5));
+  boothObjectUrl = URL.createObjectURL(file);
+
+  const boothFrame = document.getElementById("boothFrame");
+  boothFrame.innerHTML = "";
+
+  const img = document.createElement("img");
+  img.src = boothObjectUrl;
+  img.alt = "Your selected photo preview";
+
+  boothFrame.appendChild(img);
+});
+
+document.getElementById("clearBooth").addEventListener("click", () => {
+  if (boothObjectUrl) {
+    URL.revokeObjectURL(boothObjectUrl);
   }
 
-  100% {
-    transform: translate(var(--drift), 110vh) rotate(var(--twist));
-    opacity: 0;
-  }
-}
-
-@keyframes rise {
-  0% {
-    transform: translate(0, 0) rotate(-8deg);
-  }
-
-  35% {
-    transform: translate(var(--drift), -35vh) rotate(15deg);
-  }
-
-  70% {
-    transform: translate(calc(var(--drift) * -.6), -75vh) rotate(-12deg);
-  }
-
-  100% {
-    transform: translate(var(--drift), -115vh) rotate(20deg);
-  }
-}
-
-/* NAVIGATION */
-
-.topbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  flex-wrap: wrap;
-  padding: 14px 22px;
-  border-bottom: 1px solid var(--beige);
-  position: relative;
-  z-index: 5;
-}
-
-.brand {
-  text-decoration: none;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 2px;
-}
-
-.nav-links {
-  flex-basis: 100%;
-  display: flex;
-  gap: 16px;
-  flex-wrap: wrap;
-  padding: 8px 0;
-}
-
-.nav-links[hidden] {
-  display: none;
-}
-
-.nav-links a {
-  font-size: 12px;
-  text-decoration: none;
-}
-
-/* HERO */
-
-.hero {
-  text-align: center;
-  padding: 72px 20px 76px;
-  background: radial-gradient(ellipse at top, var(--white), var(--ivory));
-}
-
-.eyebrow {
-  font-size: 10px;
-  letter-spacing: 2px;
-  color: var(--coffee);
-  font-weight: 700;
-}
-
-.ornament {
-  font-size: 27px;
-  color: var(--gold);
-  margin: 12px 0;
-}
-
-h1,
-h2,
-.paper h3 {
-  font-family: "Cormorant Garamond", serif;
-  font-weight: 600;
-  color: var(--rose);
-  line-height: 1.1;
-}
-
-h1 {
-  font-size: clamp(62px, 12vw, 100px);
-  margin: 5px 0;
-}
-
-h2 {
-  font-size: clamp(39px, 7vw, 57px);
-  margin: 8px 0;
-}
-
-.hero-name {
-  letter-spacing: 3px;
-  color: var(--coffee);
-  font-weight: 700;
-}
-
-.hero p {
-  max-width: 450px;
-  margin: 16px auto 22px;
-  color: var(--muted);
-}
-
-.hero-caption {
-  font-family: "Dancing Script", cursive;
-  font-size: 21px;
-  color: var(--rose);
-  margin-top: 20px;
-}
-
-/* SECTIONS */
-
-.section {
-  max-width: 800px;
-  margin: auto;
-  padding: 43px 22px;
-}
-
-.section-heading {
-  text-align: center;
-  margin-bottom: 24px;
-}
-
-.section-heading p,
-.paper > p {
-  color: var(--muted);
-}
-
-.paper {
-  background: var(--white);
-  border: 1px solid var(--beige);
-  border-radius: 19px;
-  padding: 25px;
-  box-shadow: 0 9px 28px #6846380a;
-}
-
-.paper h3 {
-  font-size: 35px;
-  margin: 0 0 15px;
-}
-
-.letter-paper p {
-  color: var(--espresso);
-  margin-bottom: 14px;
-}
-
-.signature {
-  text-align: right;
-  font-family: "Dancing Script", cursive;
-  font-size: 27px;
-  color: var(--rose);
-}
-
-/* SCRAPBOOK */
-
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 13px;
-}
-
-.photo-slot,
-.photo-preview {
-  min-height: 165px;
-  border: 1px dashed var(--caramel);
-  border-radius: 15px;
-  background: var(--white);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  color: var(--coffee);
-  padding: 12px;
-  font-size: 12px;
-  overflow: hidden;
-}
-
-.photo-slot img,
-.photo-preview img {
-  width: 100%;
-  height: 100%;
-  max-height: 320px;
-  object-fit: cover;
-  border-radius: 10px;
-}
-
-.photo-slot:nth-child(11),
-.photo-slot:nth-child(12) {
-  grid-column: 1 / -1;
-  max-width: calc(50% - 6px);
-  width: 100%;
-  justify-self: center;
-}
-
-/* OPEN WHEN */
-
-.letters-grid {
-  display: grid;
-  gap: 11px;
-}
-
-.letter-card,
-.player {
-  background: var(--white);
-  border: 1px solid var(--beige);
-  border-radius: 16px;
-  padding: 16px;
-  box-shadow: 0 6px 20px #68463808;
-}
-
-.letter-toggle {
-  width: 100%;
-  text-align: left;
-  background: var(--beige);
-  color: var(--espresso);
-  border-radius: 12px;
-  font-weight: 700;
-}
-
-.letter-content {
-  margin: 13px 4px 2px;
-  color: var(--muted);
-}
-
-/* MUSIC PLAYERS */
-
-.players-grid {
-  display: grid;
-  gap: 14px;
-}
-
-.player {
-  text-align: center;
-  padding: 18px;
-}
-
-.player .eyebrow {
-  color: var(--rose);
-}
-
-.player h3 {
-  font-family: "Cormorant Garamond", serif;
-  font-size: 29px;
-  color: var(--espresso);
-  margin: 5px 0 13px;
-}
-
-.chapter-photo {
-  min-height: 210px;
-  margin: 0 auto 14px;
-  max-width: 330px;
-  background: var(--ivory);
-}
-
-.player audio {
-  display: none;
-}
-
-.player-controls {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 9px;
-  flex-wrap: wrap;
-  margin-top: 10px;
-}
-
-.progress {
-  width: 100%;
-  max-width: 360px;
-  accent-color: var(--rose);
-  display: block;
-  margin: 8px auto;
-}
-
-.time-row {
-  display: flex;
-  justify-content: space-between;
-  max-width: 360px;
-  margin: auto;
-  color: var(--muted);
-  font-size: 11px;
-}
-
-.small-note {
-  font-size: 11px;
-  color: var(--muted);
-}
-
-/* QUIZ */
-
-.center {
-  text-align: center;
-}
-
-.quiz-card {
-  max-width: 680px;
-  margin: auto;
-}
-
-.quiz-topline {
-  display: flex;
-  justify-content: space-between;
-  color: var(--coffee);
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 1px;
-}
-
-.progress-track {
-  height: 6px;
-  background: var(--beige);
-  border-radius: 99px;
-  overflow: hidden;
-  margin: 12px 0 20px;
-}
-
-.progress-track div {
-  height: 100%;
-  width: 10%;
-  background: var(--rose);
-  transition: width 0.25s;
-}
-
-.question {
-  font-family: "DM Sans", sans-serif;
-  font-size: 21px;
-  font-weight: 700;
-  color: var(--espresso);
-  margin: 14px 0;
-}
-
-.answers {
-  display: grid;
-  gap: 9px;
-}
-
-.answer {
-  width: 100%;
-  text-align: left;
-  background: var(--white);
-  color: var(--coffee);
-  border: 1px solid var(--beige);
-  border-radius: 12px;
-}
-
-.answer:hover:not(:disabled) {
-  background: var(--ivory);
-  color: var(--espresso);
-}
-
-.answer.correct {
-  background: #e8efe3;
-  border-color: #91a985;
-  color: #355333;
-}
-
-.answer.incorrect {
-  background: #f5e5e3;
-  border-color: #c88c87;
-  color: #793d43;
-}
-
-.feedback {
-  min-height: 28px;
-  color: var(--rose);
-  font-weight: 600;
-}
-
-.quiz-actions {
-  display: flex;
-  gap: 9px;
-  flex-wrap: wrap;
-}
-
-/* PHOTO BOOTH */
-
-.booth-card {
-  text-align: center;
-}
-
-input[type="password"],
-input[type="file"] {
-  max-width: 100%;
-  padding: 10px;
-  border: 1px solid var(--beige);
-  border-radius: 12px;
-  background: var(--white);
-  color: var(--espresso);
-}
-
-.photo-preview {
-  min-height: 230px;
-  margin-top: 16px;
-}
-
-.photo-preview img {
-  max-height: 360px;
-  object-fit: contain;
-}
-
-/* SECRET */
-
-.secret-card {
-  background: var(--espresso);
-  border: 1px solid var(--coffee);
-  border-radius: 20px;
-  padding: 30px 22px;
-  color: var(--white);
-}
-
-.secret-card .eyebrow {
-  color: var(--gold);
-}
-
-.secret-card h2 {
-  color: var(--gold);
-}
-
-.secret-card p {
-  color: var(--beige);
-}
-
-.secret-card input {
-  width: min(190px, 100%);
-  margin: 5px;
-}
-
-.secret-feedback {
-  color: var(--gold) !important;
-}
-
-.final-message {
-  font-family: "Dancing Script", cursive;
-  font-size: 25px;
-  color: var(--rose) !important;
-}
-
-.footer-note {
-  margin-top: 24px;
-}
-
-[hidden] {
-  display: none !important;
-}
-
-/* MOBILE AND DESKTOP */
-
-@media (min-width: 650px) {
-  .gallery {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
-  .photo-slot:nth-child(11),
-  .photo-slot:nth-child(12) {
-    grid-column: auto;
-    max-width: none;
-  }
-
-  .photo-slot:nth-child(11) {
-    grid-column: 2;
-  }
-
-  .photo-slot:nth-child(12) {
-    grid-column: 3;
-  }
-
-  .players-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .player:first-child {
-    grid-column: 1 / -1;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-
-  .particle {
-    animation: none;
-  }
-
-  button {
-    transition: none;
-  }
-}
+  boothObjectUrl = null;
+  boothInput.value = "";
+
+  document.getElementById("boothFrame").innerHTML =
+    "<span>♡<br><small>Your photo will appear here</small></span>";
+});
