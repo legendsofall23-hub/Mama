@@ -1,0 +1,269 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#F4EBDD">
+  <title>My Mama 💖🫶 — Raksha's Diary</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Cormorant+Garamond:wght@500;600;700&family=Dancing+Script:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div id="decor"></div>
+
+<div class="site">
+
+  <nav class="topbar">
+    <a class="brand" href="#home">♡ MAMA'S DIARY</a>
+
+    <button id="menuButton" class="secondary">Explore ☰</button>
+
+    <div id="navLinks" class="nav-links" hidden>
+      <a href="#letter">Letter</a>
+      <a href="#memories">Memories</a>
+      <a href="#open-when">Open When</a>
+      <a href="#music">Music</a>
+      <a href="#quiz">Quiz</a>
+      <a href="#photo-booth">Photo Booth</a>
+      <a href="#secret">Secret</a>
+    </div>
+  </nav>
+
+  <header class="hero" id="home">
+    <div class="eyebrow">A LITTLE PLACE MADE WITH LOVE</div>
+
+    <div class="ornament">✧ ♡ ✧</div>
+
+    <h1>My Mama</h1>
+
+    <div class="hero-name">💖 RAKSHA 🫶</div>
+
+    <p>A tiny diary of memories, laughter, and a friendship I never want to lose.</p>
+
+    <button id="openDiary">Open our diary ♡</button>
+
+    <div class="hero-caption">A little corner of the internet, just for you.</div>
+  </header>
+
+  <main>
+
+    <!-- BIRTHDAY LETTER -->
+    <section class="section" id="letter">
+
+      <div class="section-heading">
+        <div class="eyebrow">A NOTE FROM ME</div>
+        <h2>A letter for you</h2>
+      </div>
+
+      <article class="paper letter-paper">
+
+        <h3>My Mama 💖🫶</h3>
+
+        <p>
+          Raksha, you're one of the closest and most trustworthy people in my life.
+          I'm genuinely lucky to have a friend like you. 🥹❤️
+          You've been with me through my worst situations, supported me when
+          things weren't right, and never made me feel alone.
+          I'll always be grateful for that.
+        </p>
+
+        <p>
+          I just want you to know that I'll be there for you the same way you
+          were there for me. No matter what happens, I never want to leave you
+          alone in your difficult times. We might have silly fights or
+          misunderstandings, but that will never change the place you have
+          in my life. 🫂
+        </p>
+
+        <p>You're not just a friend, you're my special Mama! 💖♾️</p>
+
+        <p>Whatever happens, we've got each other! ❤️‍🩹🫶</p>
+
+        <div class="signature">— Always, Ahamed</div>
+
+      </article>
+    </section>
+
+
+    <!-- SCRAPBOOK -->
+    <section class="section" id="memories">
+
+      <div class="section-heading">
+        <div class="eyebrow">LITTLE MOMENTS, BIG MEMORIES</div>
+        <h2>Our scrapbook</h2>
+        <p>12 little spaces for memories worth keeping.</p>
+      </div>
+
+      <div class="gallery" id="gallery"></div>
+
+    </section>
+
+
+    <!-- OPEN WHEN -->
+    <section class="section" id="open-when">
+
+      <div class="section-heading">
+        <div class="eyebrow">FOR EVERY KIND OF DAY</div>
+        <h2>Open when...</h2>
+        <p>Tap a letter whenever you need it. ♡</p>
+      </div>
+
+      <div class="letters-grid" id="letters"></div>
+
+    </section>
+
+
+    <!-- MUSIC -->
+    <section class="section" id="music">
+
+      <div class="section-heading">
+        <div class="eyebrow">FIVE CHAPTERS, ONE FRIENDSHIP</div>
+        <h2>Our little soundtrack</h2>
+        <p>Every chapter has its own photo and its own song.</p>
+      </div>
+
+      <div class="players-grid" id="players"></div>
+
+      <p class="small-note center">
+        Songs are optional and never autoplay.
+      </p>
+
+    </section>
+
+
+    <!-- QUIZ -->
+    <section class="section" id="quiz">
+
+      <div class="section-heading">
+        <div class="eyebrow">HOW WELL DO YOU KNOW US?</div>
+        <h2>Our Friendship Quiz</h2>
+        <p>Let's see how much you remember. 😆</p>
+      </div>
+
+      <article class="paper quiz-card">
+
+        <div class="quiz-topline">
+          <span id="questionCount">QUESTION 1 / 10</span>
+          <span id="scoreCount">SCORE: 0</span>
+        </div>
+
+        <div class="progress-track">
+          <div id="quizProgress"></div>
+        </div>
+
+        <h3 id="questionText" class="question"></h3>
+
+        <div id="answers" class="answers"></div>
+
+        <p id="feedback" class="feedback" aria-live="polite"></p>
+
+        <div class="quiz-actions">
+          <button id="nextQuestion" hidden>Next →</button>
+          <button id="restartQuiz" class="secondary" hidden>Play again ↻</button>
+        </div>
+
+      </article>
+    </section>
+
+
+    <!-- PHOTO BOOTH -->
+    <section class="section" id="photo-booth">
+
+      <div class="section-heading">
+        <div class="eyebrow">SAVE A LITTLE MOMENT</div>
+        <h2>Photo booth</h2>
+        <p>Choose a photo and see a local preview.</p>
+      </div>
+
+      <article class="paper booth-card">
+
+        <label for="photoInput">Choose a photo</label>
+
+        <input id="photoInput" type="file" accept="image/*">
+
+        <div class="photo-preview" id="photoPreview">
+          📷 Your photo will appear here
+        </div>
+
+      </article>
+    </section>
+
+
+    <!-- SECRET -->
+    <section class="section" id="secret">
+
+      <article class="secret-card center">
+
+        <div class="eyebrow">A LITTLE SECRET</div>
+
+        <div class="ornament">✧ ♡ ✧</div>
+
+        <h2>Find Me ma Chello</h2>
+
+        <p>Only you might know this one...</p>
+
+        <form id="secretForm">
+
+          <input
+            id="secretInput"
+            type="password"
+            placeholder="Secret word"
+            autocomplete="off"
+          >
+
+          <button type="submit">Unlock ♡</button>
+
+        </form>
+
+        <p id="secretFeedback"></p>
+
+        <p id="secretMessage" hidden>
+          Ahaa! You found it! 😆💖 You're my special Mama.
+          More memories, more laughter, always! ♾️
+        </p>
+
+      </article>
+
+    </section>
+
+
+    <!-- FINAL -->
+    <section class="section final-section center">
+
+      <article class="paper">
+
+        <div class="ornament">✧ ♡ ✧</div>
+
+        <h2>Forever memories</h2>
+
+        <p>Whatever happens, we've got each other, Mama.</p>
+
+        <button id="finalButton">One last little note ♡</button>
+
+        <p id="finalMessage" hidden>
+          You're a special part of my story.
+          Thank you for being you. 💖🫶
+        </p>
+
+      </article>
+
+      <div class="eyebrow footer-note">MADE WITH ♡ FOR RAKSHA</div>
+
+    </section>
+
+  </main>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
